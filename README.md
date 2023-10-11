@@ -1,70 +1,41 @@
 # Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is first app to try a data fetching library like SWR. So, I built this simple application which fetching data from server, and paginating data feature with `useSWR` using `the Rick and Morty Character API`.
+it was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), and created node server to fetch the data from this server by React Hook for data fetching [SWR](https://github.com/vercel/swr).
+
+`SWR` automatically re-validating and updating data without requiring us to manually refresh or reload the application.
+
+### The `useSWR` hook accepts two arguments.
+
+`key` is the URL of our server or the API endpoint to fetch data from.
+`fetcher` which is an async function that contains the logic for fetching the data.
+
+`const fetcher = (...args) => fetch(...args).then((res) => res.json());`
+
+`const { data, error, isLoading } = useSWR(key, fetcher);`
+
+### `useSWR` returns two main values:
+
+`data`, which is the object value returned from the resource you're fetching, and a `error`, which contains error, if any is caught.
+
+It also returns two additional values, `isLoading` and `isValidating`, depending on the state of the fetcher function.
+
+I have applied some of the features such as: Prefetching, Pagination, and Infinite Loading.
+
+I used another hook which `useSWRInfinite()` to create the Infinite Loading to (Load More button) component.
 
 ## Available Scripts
 
-In the project directory, you can run:
+In the `src` directory, you can run:
 
-### `npm start`
+### `npm run start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+In the `server` directory, you must move to this directory by this command `cd server` and run:
 
-### `npm test`
+### `npm dev`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Runs the node server app.\
+Open [http://localhost:3001](http://localhost:3001) to run the server.
